@@ -1,9 +1,12 @@
 {
   "scripts": {
     "dev:server": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "dev:production": "yarn tsc && node dist/server.js"
+    "dev:queue": "ts-node-dev --transpile-only --ignore-watch node_modules src/workers/testQueueWorker.ts",
+    "prod:server": "node dist/server.js",
+    "prod:queue": "node dist/workers/testQueueWorker.js"
   },
   "devDependencies": {
+    "@types/ioredis": "^4.17.8",
     "@typescript-eslint/eslint-plugin": "^4.8.0",
     "@typescript-eslint/parser": "^4.8.0",
     "eslint": "^7.13.0",
@@ -15,5 +18,10 @@
     "prettier": "^2.1.2",
     "ts-node-dev": "^1.0.0",
     "typescript": "^4.0.5"
+  },
+  "dependencies": {
+    "bullmq": "^1.10.0",
+    "dotenv": "^8.2.0",
+    "ioredis": "^4.19.2"
   }
 }
